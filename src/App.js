@@ -126,7 +126,7 @@ function App() {
           </div>
           <div className="socials-icon">
             <a
-              href="https://github.com/JennyLin1995.com"
+              href="https://github.com/JennyLin1995"
               target="_blank"
               rel="noopener noreferrer"
             >
