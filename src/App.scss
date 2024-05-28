@@ -1,0 +1,174 @@
+@import './styles/root.scss';
+
+$flicker-colors: $colors;
+
+.App {
+  text-align: right;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 90vw;
+  position: relative;
+
+  .container {
+    max-width: 800px;
+    height: 100vh;
+    .header {
+      display: flex;
+      padding-top: 10vh;
+      flex-direction: column;
+      justify-content: center;
+      align-items: start;
+    }
+  }
+
+  .menu-socials {
+    position: fixed;
+    top: 50%;
+    right: 1%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .socials-icon,
+    .menu-icon {
+      margin: 10px 0;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      svg {
+        width: 100%;
+        height: 100%;
+        animation: neon-colors 10s infinite alternate;
+        path {
+          filter: drop-shadow(0 0 1px $content-neon-white);
+        }
+      }
+
+      &:nth-child(2) {
+        svg {
+          animation-delay: -2s;
+        }
+      }
+      &:nth-child(4) {
+        svg {
+          animation-delay: -4s;
+        }
+      }
+      &:nth-child(6) {
+        svg {
+          animation-delay: -6s;
+        }
+      }
+    }
+
+    .socials-icon:hover,
+    .menu-icon:hover {
+      filter: drop-shadow(0 0 15px $content-neon-white);
+
+      svg path {
+        fill: $content-neon-white;
+      }
+    }
+
+    .menu-icon.active {
+      filter: drop-shadow(0 0 15px $content-neon-white);
+
+      svg path {
+        fill: $content-neon-white;
+      }
+    }
+
+    @media (max-width: 768px) {
+      position: static;
+      flex-direction: row;
+      justify-content: center;
+      margin-top: 75px;
+      gap: 30px;
+
+      .socials-icon:nth-child(1) {
+        margin-top: 70px;
+      }
+
+      .socials-icon:nth-child(3) {
+        margin-top: 50px;
+      }
+    }
+  }
+
+  .attention-scroll {
+    position: absolute;
+    width: 2vw;
+    height: 100vh;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    &.invisible {
+      opacity: 0;
+    }
+    .pointer {
+      animation: moveUpDown 3s infinite;
+      transform: rotate(205deg);
+      svg {
+        animation: neon-colors 10s infinite alternate;
+        path {
+          filter: drop-shadow(0 0 7px $content-neon-white);
+        }
+      }
+    }
+    &.left {
+      left: -2vw;
+    }
+    &.right {
+      right: -2vw;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .App {
+    display: block;
+    width: 90vw;
+
+    .attention-scroll {
+      display: none;
+    }
+
+    .container {
+      .header {
+        padding-top: 5vh;
+      }
+      .content {
+        margin-bottom: 100px;
+      }
+    }
+
+    .menu-socials {
+      position: fixed;
+      bottom: 0;
+      top: initial;
+      left: 0;
+      right: 0;
+      padding: 10px;
+      margin: 0;
+      background-color: rgba($color: #000, $alpha: 0.7);
+      transform: none;
+      .socials-icon,
+      .menu-icon {
+        margin: 0;
+      }
+
+      .menu-icon {
+        flex-direction: row;
+        justify-content: center;
+        gap: 30px;
+      }
+    }
+  }
+}

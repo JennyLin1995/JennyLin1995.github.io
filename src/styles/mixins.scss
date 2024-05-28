@@ -1,0 +1,115 @@
+@mixin neon-effect($color) {
+  text-shadow:
+    0 0 5px $color,
+    0 0 10px $color,
+    0 0 20px $color,
+    0 0 40px lighten($color, 10%),
+    0 0 80px lighten($color, 20%);
+}
+
+@mixin fly-out-animation($directionX, $directionY, $duration) {
+  $animation-name: unique-id() !global;
+  @keyframes #{$animation-name} {
+    from {
+      transform: translate(0, 0);
+      opacity: 1;
+    }
+    to {
+      transform: translate($directionX, $directionY);
+      opacity: 0;
+    }
+  }
+  animation: $animation-name $duration forwards;
+}
+
+@mixin fly-in-animation($directionX, $directionY, $duration) {
+  $animation-name: unique-id() !global;
+  @keyframes #{$animation-name} {
+    from {
+      transform: translate($directionX, $directionY);
+      opacity: 0;
+    }
+    to {
+      transform: translate(0, 0);
+      opacity: 1;
+    }
+  }
+  animation: $animation-name $duration forwards;
+}
+
+@mixin paragraph($side, $color, $space) {
+  margin-left: #{$space}vw;
+  margin-right: #{$space * -1}vw;
+  $translucent-color: fade-out($color, 0.3);
+  background: linear-gradient(
+    to $side,
+    $translucent-color 0%,
+    rgba(0, 0, 0, 0.7) 60%,
+    rgba(0, 0, 0, 0.1) 80%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+@keyframes neon-colors {
+  0% {
+    fill: $color1;
+  }
+  25% {
+    fill: $color5;
+  }
+  50% {
+    fill: $color3;
+  }
+  75% {
+    fill: $color6;
+  }
+  100% {
+    fill: $color7;
+  }
+}
+
+@keyframes moveUpDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.neon-text {
+  display: inline-block;
+  color: $content-neon-white;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+  text-shadow:
+    0 0 5px rgba(255, 255, 255, 0.8),
+    0 0 10px rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(255, 255, 255, 0.8),
+    0 0 30px rgba(255, 255, 255, 0.8);
+
+  .highlight {
+    animation: flicker 2s infinite alternate;
+  }
+
+  @keyframes flicker {
+    from {
+      text-shadow:
+        0 0 5px nth($colors, 1),
+        0 0 10px nth($colors, 2),
+        0 0 20px nth($colors, 3),
+        0 0 20px nth($colors, 4),
+        0 0 30px nth($colors, 5);
+    }
+    to {
+      text-shadow:
+        0 0 10px nth($colors, 1),
+        0 0 20px nth($colors, 2),
+        0 0 30px nth($colors, 3),
+        0 0 20px nth($colors, 4),
+        0 0 40px nth($colors, 5);
+    }
+  }
+}

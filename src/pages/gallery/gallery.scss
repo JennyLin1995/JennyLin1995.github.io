@@ -1,0 +1,71 @@
+@import './../../styles/root.scss';
+
+.gallery {
+  width: 800px;
+  height: 100%;
+
+  .not-hidden-cats {
+    opacity: 1;
+  }
+
+  .hidden-cats {
+    opacity: 0;
+  }
+
+  .hidden-cat {
+    text-align: left;
+    margin-bottom: -22px;
+    margin-top: -5vh;
+    z-index: 100;
+    position: relative;
+    svg {
+      animation: neon-colors 10s infinite alternate;
+      path {
+        filter: drop-shadow(0 0 10px $content-neon-white);
+      }
+    }
+  }
+
+  .gallery-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 200px;
+    grid-auto-columns: 200px;
+  }
+  @media (max-width: 768px) {
+    .gallery-container {
+      display: flex;
+      flex-direction: column;
+      width: 90vw;
+
+      .gallery-img {
+        width: 70vw;
+        margin: 0 auto;
+      }
+
+      .not-hidden-cats,
+      .hidden-cats {
+        display: none;
+      }
+    }
+    .hidden-cat {
+      display: none;
+    }
+  }
+
+  .gallery-img {
+    &.double-row {
+      grid-row-end: span 2;
+    }
+
+    &.double-col {
+      grid-column-end: span 2;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}

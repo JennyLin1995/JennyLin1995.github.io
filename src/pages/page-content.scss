@@ -1,0 +1,87 @@
+@import './../styles/root.scss';
+
+.page-content {
+  margin-top: 5vh;
+}
+
+.fly-out {
+  .card-link.card-higher {
+    @include fly-out-animation(100%, 0, 1s);
+  }
+  .card-link.card-lower {
+    @include fly-out-animation(0, 100%, 1s);
+  }
+  .skills {
+    @include fly-out-animation(0, 100%, 1s);
+  }
+  .paragraph {
+    &:nth-child(1) {
+      @include fly-out-animation(100%, 0, 1s);
+    }
+    &:nth-child(2) {
+      @include fly-out-animation(-100%, 0, 1s);
+    }
+    &:nth-child(4) {
+      @include fly-out-animation(-100%, 0, 1s);
+    }
+    &:nth-child(5) {
+      @include fly-out-animation(100%, 0, 1s);
+    }
+    &:nth-child(6) {
+      @include fly-out-animation(-100%, 0, 1s);
+    }
+  }
+  .hidden-cat {
+    @include fly-out-animation(0, 0, 1s);
+  }
+  .gallery-img {
+    @include fly-out-animation(0, 100%, 1s);
+    &:nth-child(4n) {
+      @include fly-out-animation(-100%, 0, 1s);
+    }
+    &:nth-child(6n) {
+      @include fly-out-animation(100%, 0, 1s);
+    }
+  }
+}
+
+.fly-in {
+  .card-link.card-higher {
+    @include fly-in-animation(0, 100%, 1s);
+  }
+  .card-link.card-lower {
+    @include fly-in-animation(-100%, 0, 1s);
+  }
+  .skills {
+    @include fly-in-animation(0, -100%, 1s);
+  }
+  .paragraph {
+    &:nth-child(1) {
+      @include fly-in-animation(-100%, 0, 1s);
+    }
+    &:nth-child(2) {
+      @include fly-in-animation(100%, 0, 1s);
+    }
+    &:nth-child(4) {
+      @include fly-in-animation(100%, 0, 1s);
+    }
+    &:nth-child(5) {
+      @include fly-in-animation(-100%, 0, 1s);
+    }
+    &:nth-child(6) {
+      @include fly-in-animation(-100%, 0, 1s);
+    }
+  }
+  .hidden-cat {
+    @include fly-in-animation(0, 0, 1s);
+  }
+  .gallery-img {
+    @include fly-in-animation(0, 100%, 1s);
+    &:nth-child(4n) {
+      @include fly-in-animation(-100%, 0, 1s);
+    }
+    &:nth-child(6n) {
+      @include fly-in-animation(100%, 0, 1s);
+    }
+  }
+}

@@ -1,0 +1,101 @@
+@import './../../styles/root.scss';
+
+.about-me {
+  width: 100%;
+
+  .paragraph,
+  .skills {
+    padding: 20px;
+    margin: 10px 0;
+    background-color: transparent;
+    border-radius: 8px;
+    position: relative;
+    overflow: visible;
+    box-shadow: none;
+  }
+
+  .skills {
+    display: flex;
+    flex-direction: column;
+    .skills-section {
+      width: 100%;
+      text-align: center;
+      .skills-tag {
+        color: $content-neon-white;
+        border: 2px solid transparent;
+        border-radius: 16px;
+        margin: 4px 8px;
+        padding: 4px 8px;
+        font-size: 14px;
+        font-weight: bold;
+        background-color: rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0 5px 3px $color1;
+      }
+    }
+    .skills-section:nth-child(even) {
+      margin-left: 40px;
+    }
+    .skills-section:nth-child(odd) {
+      margin-left: -100px;
+    }
+  }
+
+  .paragraph {
+    &.left,
+    &.right {
+      span {
+        text-shadow: none;
+        font-family: Calibri, 'Trebuchet MS', sans-serif;
+        font-size: larger;
+      }
+    }
+
+    &.left {
+      text-align: left;
+    }
+
+    &.right {
+      text-align: right;
+    }
+    &:nth-child(1) {
+      @include paragraph(right, $color1, -5);
+    }
+    &:nth-child(2) {
+      @include paragraph(left, $color6, 3);
+    }
+    &:nth-child(4) {
+      @include paragraph(left, $color3, -2);
+    }
+    &:nth-child(5) {
+      @include paragraph(right, $color7, -7);
+    }
+    &:nth-child(6) {
+      @include paragraph(left, $color4, 6);
+    }
+
+    &:last-child {
+      margin-bottom: 5vh;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .about-me {
+    width: 90vw;
+    .paragraph,
+    .skills,
+    .skills-section {
+      margin: 0 !important;
+    }
+    .skills {
+      .skills-section {
+        margin: 0 !important;
+        .skills-tag {
+          font-size: 12px;
+          padding: 2px 4px;
+          margin: 2px 4px;
+        }
+      }
+    }
+  }
+}

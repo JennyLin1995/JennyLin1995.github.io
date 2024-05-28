@@ -1,0 +1,57 @@
+@import './styles/root.scss';
+
+$backgrounds: ();
+
+@for $i from 1 through 20 {
+  $color: nth($colors, $i % length($colors) + 1);
+  $desaturated-color: $color;
+  $size: 5% + random(20);
+  $position-x: 5% + random(90);
+  $position-y: 5% + random(90);
+
+  $backgrounds: append(
+    $backgrounds,
+    radial-gradient(
+      circle at #{$position-x} #{$position-y},
+      #{$desaturated-color},
+      transparent #{$size}
+    ),
+    comma
+  );
+}
+
+.major-mono-display-regular {
+  font-family: 'Major Mono Display', monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  font-family: 'Major Mono Display', monospace;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: #{$backgrounds};
+  background-color: $content-bg-color;
+  overflow: hidden;
+
+  #root {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
